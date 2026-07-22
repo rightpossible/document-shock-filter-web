@@ -25,17 +25,9 @@ Open http://localhost:3000
 NEXT_PUBLIC_API_URL=https://document-shock-filter-23modl2eja-ew.a.run.app
 ```
 
-## Profiles on `/try`
+## Restore recipe on `/try`
 
-| Option | API profile | Notes |
-|--------|-------------|-------|
-| Faded handwriting (recommended) | `faded_handwriting` | Thin cursive / faded scans |
-| Water damage (LCR + APSO) | `shock_v2_lcr_apso` | DIBCO water-degraded pages |
-| Classic LCR | `shock_v2_lcr` | Soft LCR baseline |
-| Bilateral only | `b1_bilateral_only` | Minimal processing |
-| APSO moderate (no LCR) | `apso_moderate` | Early full APSO dump |
-
-Shock + stain profiles target water damage. For faded handwriting, use **Faded handwriting**.
+The demo always calls Cloud Run with **`shock_v2_lcr`** (LCR-weighted shock + stain removal). There is no profile picker in the UI.
 
 ## Deploy (Vercel)
 

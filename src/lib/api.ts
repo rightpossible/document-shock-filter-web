@@ -1,7 +1,7 @@
 import type { RestoreResult } from "./types";
 import { DEFAULT_PROFILE } from "./profiles";
 
-export { DEFAULT_PROFILE, PROFILE_OPTIONS } from "./profiles";
+export { DEFAULT_PROFILE } from "./profiles";
 
 const API_URL =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/$/, "") ||
