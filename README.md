@@ -29,11 +29,13 @@ NEXT_PUBLIC_API_URL=https://document-shock-filter-23modl2eja-ew.a.run.app
 
 | Option | API profile | Notes |
 |--------|-------------|-------|
-| LCR-WSF + APSO (default) | `shock_v2_lcr_apso` | Phase 3 Table 4.2 knobs baked in |
+| Faded handwriting (recommended) | `faded_handwriting` | Thin cursive / faded scans |
+| Water damage (LCR + APSO) | `shock_v2_lcr_apso` | DIBCO water-degraded pages |
 | Classic LCR | `shock_v2_lcr` | Soft LCR baseline |
+| Bilateral only | `b1_bilateral_only` | Minimal processing |
 | APSO moderate (no LCR) | `apso_moderate` | Early full APSO dump |
 
-APSO was run offline on DIBCO; the UI applies those knobs and does **not** re-optimise per upload.
+Shock + stain profiles target water damage. For faded handwriting, use **Faded handwriting**.
 
 ## Deploy (Vercel)
 

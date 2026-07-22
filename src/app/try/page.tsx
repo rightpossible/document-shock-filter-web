@@ -113,8 +113,8 @@ export default function TryPage() {
           ))}
         </select>
         <p className="mt-2 text-sm text-muted">
-          APSO was run offline on DIBCO; this applies the tuned knobs — it does
-          not re-optimise per upload.
+          Shock + stain profiles are for water-damaged DIBCO pages. For thin
+          cursive or faded scans, use <strong className="text-ink">Faded handwriting</strong>.
         </p>
       </div>
 
