@@ -12,10 +12,30 @@ export function toDataUrl(pngBase64: string) {
   return `data:image/png;base64,${pngBase64}`;
 }
 
+export const DEFAULT_PROFILE = "shock_v2_lcr_apso";
+
+export const PROFILE_OPTIONS = [
+  {
+    id: "shock_v2_lcr_apso",
+    label: "LCR-WSF + APSO (default)",
+    hint: "Phase 3 Table 4.2 knobs baked in",
+  },
+  {
+    id: "shock_v2_lcr",
+    label: "Classic LCR",
+    hint: "Committed soft LCR baseline",
+  },
+  {
+    id: "apso_moderate",
+    label: "APSO moderate (no LCR)",
+    hint: "Full early APSO train dump",
+  },
+] as const;
+
 export async function restoreImage(
   image: File,
   reference?: File | null,
-  profile = "shock_v2_lcr",
+  profile = DEFAULT_PROFILE,
 ): Promise<RestoreResult> {
   const form = new FormData();
   form.append("image", image);

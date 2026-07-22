@@ -25,6 +25,16 @@ Open http://localhost:3000
 NEXT_PUBLIC_API_URL=https://document-shock-filter-23modl2eja-ew.a.run.app
 ```
 
+## Profiles on `/try`
+
+| Option | API profile | Notes |
+|--------|-------------|-------|
+| LCR-WSF + APSO (default) | `shock_v2_lcr_apso` | Phase 3 Table 4.2 knobs baked in |
+| Classic LCR | `shock_v2_lcr` | Soft LCR baseline |
+| APSO moderate (no LCR) | `apso_moderate` | Early full APSO dump |
+
+APSO was run offline on DIBCO; the UI applies those knobs and does **not** re-optimise per upload.
+
 ## Deploy (Vercel)
 
 1. Import `rightpossible/document-shock-filter-web` on Vercel.
@@ -37,7 +47,7 @@ NEXT_PUBLIC_API_URL=https://document-shock-filter-23modl2eja-ew.a.run.app
 | Route | Purpose |
 |-------|---------|
 | `/` | Landing |
-| `/try` | Upload + live restore |
+| `/try` | Upload + live restore (+ profile picker) |
 | `/method` | Pipeline stages |
 | `/results` | Thesis highlight numbers |
 | `/about` | Citation + links |

@@ -6,12 +6,18 @@ import { BeforeAfterSlider } from "@/components/BeforeAfterSlider";
 import { MetricStrip } from "@/components/MetricStrip";
 import { RestoreButton } from "@/components/RestoreButton";
 import { UploadDropzone } from "@/components/UploadDropzone";
-import { restoreImage, toDataUrl } from "@/lib/api";
+import {
+  DEFAULT_PROFILE,
+  PROFILE_OPTIONS,
+  restoreImage,
+  toDataUrl,
+} from "@/lib/api";
 import type { RestoreResult } from "@/lib/types";
 
 export default function TryPage() {
   const [image, setImage] = useState<File | null>(null);
   const [reference, setReference] = useState<File | null>(null);
+  const [profile, setProfile] = useState<string>(DEFAULT_PROFILE);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<RestoreResult | null>(null);
@@ -26,7 +32,7 @@ export default function TryPage() {
     setBusy(true);
     setError(null);
     try {
-      const data = await restoreImage(image, reference);
+      const data = await restoreImage(image, reference, profile);
       setResult(data);
     } catch (e) {
       setResult(null);
@@ -83,6 +89,35 @@ export default function TryPage() {
         />
       </div>
 
+      <div className="mt-6 max-w-md">
+        <label
+          htmlFor="profile"
+          className="text-[11px] uppercase tracking-[0.14em] text-muted"
+        >
+          Restore profile
+        </label>
+        <select
+          id="profile"
+          value={profile}
+          disabled={busy}
+          onChange={(e) => {
+            setProfile(e.target.value);
+            setResult(null);
+          }}
+          className="mt-2 w-full rounded-[12px] border border-border bg-surface px-3 py-2.5 text-sm text-ink outline-none transition-colors duration-200 focus:border-accent disabled:opacity-50"
+        >
+          {PROFILE_OPTIONS.map((opt) => (
+            <option key={opt.id} value={opt.id}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
+        <p className="mt-2 text-sm text-muted">
+          APSO was run offline on DIBCO; this applies the tuned knobs — it does
+          not re-optimise per upload.
+        </p>
+      </div>
+
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <RestoreButton busy={busy} disabled={!image} onClick={onRestore} />
         <button
@@ -105,7 +140,7 @@ export default function TryPage() {
         </button>
         {busy && (
           <p className="text-sm text-muted">
-            Running LCR-weighted shock filter on Cloud Run…
+            Running {profile} on Cloud Run…
           </p>
         )}
       </div>
