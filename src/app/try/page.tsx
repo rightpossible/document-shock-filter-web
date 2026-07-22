@@ -143,9 +143,7 @@ export default function TryPage() {
               </button>
             </div>
             <BeforeAfterSlider
-              beforeSrc={
-                previewUrl ?? toDataUrl(result.input_png_base64)
-              }
+              beforeSrc={toDataUrl(result.input_png_base64)}
               afterSrc={toDataUrl(result.restored_png_base64)}
             />
             <MetricStrip
