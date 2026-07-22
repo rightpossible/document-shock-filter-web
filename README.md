@@ -23,12 +23,17 @@ Open http://localhost:3000
 NEXT_PUBLIC_API_URL=https://document-shock-filter-23modl2eja-ew.a.run.app
 ```
 
-## Deploy (manual)
+## Deploy (manual — Vercel)
 
-1. Push this repo to GitHub.
-2. Import on **Vercel** (Framework: Next.js, Install: `pnpm install`, Build: `pnpm build`).
-3. Set `NEXT_PUBLIC_API_URL` to the Cloud Run URL above.
-4. After you have the production URL, send it so Cloud Run `CORS_ORIGINS` can be updated.
+Repo is already on GitHub: https://github.com/rightpossible/document-shock-filter-web
+
+1. Vercel → **Add New Project** → import `rightpossible/document-shock-filter-web`.
+2. Framework: **Next.js**. Install: `pnpm install`. Build: `pnpm build`. Output: default.
+3. Environment variable:
+   - `NEXT_PUBLIC_API_URL` = `https://document-shock-filter-23modl2eja-ew.a.run.app`
+4. Deploy, then **paste the production URL back in chat** so Cloud Run `CORS_ORIGINS` can include it (localhost is already allowed).
+
+Until CORS is updated, the live Vercel site will fail restore calls from the browser; local `pnpm dev` works.
 
 ## Pages
 

@@ -85,6 +85,24 @@ export default function TryPage() {
 
       <div className="mt-6 flex flex-wrap items-center gap-4">
         <RestoreButton busy={busy} disabled={!image} onClick={onRestore} />
+        <button
+          type="button"
+          disabled={busy}
+          onClick={async () => {
+            setError(null);
+            setResult(null);
+            const res = await fetch("/samples/degraded_01.jpg");
+            const blob = await res.blob();
+            setImage(
+              new File([blob], "degraded_01.jpg", {
+                type: blob.type || "image/jpeg",
+              }),
+            );
+          }}
+          className="btn-press rounded-[12px] border border-border bg-surface px-4 py-2 text-sm text-ink transition-colors duration-200 hover:border-accent/40 disabled:opacity-50"
+        >
+          Use sample image
+        </button>
         {busy && (
           <p className="text-sm text-muted">
             Running LCR-weighted shock filter on Cloud Run…
