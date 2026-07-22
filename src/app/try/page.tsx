@@ -53,9 +53,9 @@ export default function TryPage() {
           Try the pipeline
         </h1>
         <p className="mt-3 max-w-2xl text-base text-muted">
-          Upload a water-degraded or faded page. Restoration usually takes
-          5–15 seconds; the first request after idle may cold-start a bit
-          longer.
+          Upload a water-stained document scan (works best on DIBCO-style
+          pages). Restoration usually takes 5–15 seconds; the first request
+          after idle may cold-start a bit longer.
         </p>
       </motion.div>
 
